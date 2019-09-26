@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Learning_Blazor
+namespace LearningBlazor
 {
     public class Program
     {

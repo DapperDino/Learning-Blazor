@@ -1,0 +1,35 @@
+﻿@page "/todo"
+
+<h1>Todo(<span class="remaining">@items.Count(x => !x.IsDone)</span>)</h1>
+
+<ul>
+    @foreach (var item in items)
+    {
+        <li>
+            <input type="checkbox" @bind="item.IsDone"/>
+            @item.Text
+        </li>
+    }
+</ul>
+
+<form @onsubmit="AddItem">
+    <input placeholder="Type Something..." @bind="newItemText" />
+    <button type="submit">Add</button>
+</form>
+
+@code{
+    private List<TodoItem> items = new List<TodoItem>();
+    private string newItemText;
+
+    private void AddItem()
+    {
+        items.Add(new TodoItem { Text = newItemText });
+        newItemText = string.Empty;
+    }
+
+    private class TodoItem
+    {
+        public string Text { get; set; }
+        public bool IsDone { get; set; }
+    }
+}
